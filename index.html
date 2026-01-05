@@ -4,136 +4,101 @@
 <meta charset="UTF-8">
 <title>Personal Landing Website</title>
 
-<!-- Font Awesome -->
 <link rel="stylesheet"
  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+body{font-family:Arial,sans-serif;color:#fff;background:#000;}
 
-body{
-  font-family:Arial, sans-serif;
-  color:#fff;
-  background:#000;
-  transition:0.3s;
-}
-
-/* Animated Background */
+/* Background Animation */
 .bg-animation{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  position:fixed;inset:0;
   background:linear-gradient(-45deg,#1d2671,#c33764,#1d2671,#000);
   background-size:400% 400%;
   animation:gradient 12s ease infinite;
   z-index:-1;
 }
-
 @keyframes gradient{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 /* Header */
 header{
-  position:fixed;
-  top:0;
-  width:100%;
-  height:60px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 20px;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(6px);
-  z-index:1000;
+  position:fixed;top:0;width:100%;height:60px;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 20px;background:rgba(0,0,0,.6);
+  backdrop-filter:blur(6px);z-index:1000;
 }
-
-.logo{
-  font-size:22px;
-  font-weight:bold;
-}
-
-/* Right Icons */
-.icons i{
-  margin-left:15px;
-  cursor:pointer;
-  font-size:20px;
-}
+.logo{font-size:22px;font-weight:bold;}
+.icons i{margin-left:15px;cursor:pointer;font-size:20px;}
 
 /* Side Menu */
 nav{
-  position:fixed;
-  right:-240px;
-  top:60px;
-  width:240px;
-  height:100%;
-  background:rgba(0,0,0,0.85);
-  transition:0.3s;
+  position:fixed;right:-240px;top:60px;
+  width:240px;height:100%;
+  background:rgba(0,0,0,.85);
+  transition:.3s;
 }
-
 nav a{
-  display:block;
-  color:#fff;
-  padding:15px;
-  text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,0.1);
+  display:block;color:#fff;padding:15px;
+  text-decoration:none;border-bottom:1px solid rgba(255,255,255,.1);
 }
-
-nav a i{
-  margin-right:10px;
-}
-
-nav a:hover{
-  background:rgba(255,255,255,0.1);
-}
+nav a:hover{background:rgba(255,255,255,.1);}
 
 /* Sections */
 section{
-  height:100vh;
-  padding-top:120px;
+  height:100vh;padding-top:120px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
   text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+}
+h1{font-size:42px;margin-bottom:10px;}
+p{font-size:18px;max-width:700px}
+
+/* Staff Section */
+.staff-box{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+  width:80%;
+  margin-top:30px;
+}
+.staff{
+  background:rgba(255,255,255,.1);
+  padding:15px;border-radius:8px;
+}
+.add-btn{
+  margin-top:20px;
+  padding:10px 20px;
+  background:#ff4081;
+  border:none;color:#fff;
+  cursor:pointer;border-radius:6px;
 }
 
-h1{
-  font-size:42px;
-  margin-bottom:10px;
+/* Popup */
+.modal{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.7);
+  display:flex;align-items:center;justify-content:center;
 }
-
-p{
-  font-size:18px;
-  max-width:600px;
+.modal-content{
+  background:#111;padding:25px;
+  border-radius:8px;width:300px;
+  text-align:center;
 }
-
-/* Light Mode */
-body.light{
-  color:#111;
+.modal-content input{
+  width:100%;padding:8px;margin:10px 0;
 }
-
-body.light header,
-body.light nav{
-  background:rgba(255,255,255,0.7);
+.modal-content button{
+  padding:8px 15px;border:none;
+  margin-top:10px;cursor:pointer;
 }
-
-body.light nav a{
-  color:#111;
-}
-
-body.light nav a:hover{
-  background:rgba(0,0,0,0.1);
-}
+.close{background:red;color:#fff}
+.save{background:green;color:#fff}
 </style>
 </head>
 
@@ -150,11 +115,12 @@ body.light nav a:hover{
 </header>
 
 <nav id="menu">
-  <a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i>Home</a>
-  <a href="#about" onclick="toggleMenu()"><i class="fas fa-user"></i>About</a>
-  <a href="#skills" onclick="toggleMenu()"><i class="fas fa-code"></i>Skills</a>
-  <a href="#portfolio" onclick="toggleMenu()"><i class="fas fa-briefcase"></i>Portfolio</a>
-  <a href="#contact" onclick="toggleMenu()"><i class="fas fa-envelope"></i>Contact</a>
+  <a href="#home" onclick="toggleMenu()">Home</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#skills" onclick="toggleMenu()">Skills</a>
+  <a href="#portfolio" onclick="toggleMenu()">Portfolio</a>
+  <a href="#staff" onclick="toggleMenu()">Staff</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
 </nav>
 
 <section id="home">
@@ -164,42 +130,89 @@ body.light nav a:hover{
 
 <section id="about">
   <h1>About Me</h1>
-  <p>
-    I build modern, clean and responsive websites using HTML, CSS and JavaScript.
-  </p>
+  <p>I build modern, clean and responsive websites.</p>
 </section>
 
 <section id="skills">
-  <h1>My Skills</h1>
-  <p>HTML • CSS • JavaScript • Responsive Design</p>
+  <h1>Skills</h1>
+  <p>HTML • CSS • JavaScript</p>
 </section>
 
 <section id="portfolio">
   <h1>Portfolio</h1>
-  <p>My latest projects and works will be showcased here.</p>
+  <p>My latest works will be here.</p>
+</section>
+
+<!-- Staff Section -->
+<section id="staff">
+  <h1>Our Staff</h1>
+
+  <div class="staff-box" id="staffList">
+    <div class="staff">Staff 1</div>
+    <div class="staff">Staff 2</div>
+    <div class="staff">Staff 3</div>
+    <div class="staff">Staff 4</div>
+    <div class="staff">Staff 5</div>
+    <div class="staff">Staff 6</div>
+    <div class="staff">Staff 7</div>
+    <div class="staff">Staff 8</div>
+    <div class="staff">Staff 9</div>
+    <div class="staff">Staff 10</div>
+    <div class="staff">Staff 11</div>
+    <div class="staff">Staff 12</div>
+    <div class="staff">Staff 13</div>
+    <div class="staff">Staff 14</div>
+    <div class="staff">Staff 15</div>
+  </div>
+
+  <button class="add-btn" onclick="openModal()">➕ Add Staff</button>
 </section>
 
 <section id="contact">
-  <h1>Contact Me</h1>
+  <h1>Contact</h1>
   <p>Email: example@gmail.com</p>
 </section>
+
+<!-- Popup -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h3>Add New Staff</h3>
+    <input type="text" id="staffName" placeholder="Staff Name">
+    <button class="save" onclick="addStaff()">Save</button>
+    <button class="close" onclick="closeModal()">Cancel</button>
+  </div>
+</div>
 
 <script>
 let menuOpen=false;
 
 function toggleMenu(){
   const menu=document.getElementById("menu");
-  if(!menuOpen){
-    menu.style.right="0";
-    menuOpen=true;
-  }else{
-    menu.style.right="-240px";
-    menuOpen=false;
-  }
+  menu.style.right=menuOpen?"-240px":"0";
+  menuOpen=!menuOpen;
 }
 
 function toggleTheme(){
   document.body.classList.toggle("light");
+}
+
+function openModal(){
+  document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
+
+function addStaff(){
+  const name=document.getElementById("staffName").value;
+  if(name==="")return alert("Enter name");
+  const div=document.createElement("div");
+  div.className="staff";
+  div.innerText=name;
+  document.getElementById("staffList").appendChild(div);
+  document.getElementById("staffName").value="";
+  closeModal();
 }
 </script>
 
