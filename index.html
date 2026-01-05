@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Personal Landing Website</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  color:#fff;
+  background:#000;
+  transition:0.3s;
+}
+
+/* Animated Background */
+.bg-animation{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(-45deg,#1d2671,#c33764,#1d2671,#000);
+  background-size:400% 400%;
+  animation:gradient 12s ease infinite;
+  z-index:-1;
+}
+
+@keyframes gradient{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Header */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 20px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);
+  z-index:1000;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:bold;
+}
+
+/* Right Icons */
+.icons i{
+  margin-left:15px;
+  cursor:pointer;
+  font-size:20px;
+}
+
+/* Side Menu */
+nav{
+  position:fixed;
+  right:-240px;
+  top:60px;
+  width:240px;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  transition:0.3s;
+}
+
+nav a{
+  display:block;
+  color:#fff;
+  padding:15px;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+nav a i{
+  margin-right:10px;
+}
+
+nav a:hover{
+  background:rgba(255,255,255,0.1);
+}
+
+/* Sections */
+section{
+  height:100vh;
+  padding-top:120px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+p{
+  font-size:18px;
+  max-width:600px;
+}
+
+/* Light Mode */
+body.light{
+  color:#111;
+}
+
+body.light header,
+body.light nav{
+  background:rgba(255,255,255,0.7);
+}
+
+body.light nav a{
+  color:#111;
+}
+
+body.light nav a:hover{
+  background:rgba(0,0,0,0.1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-animation"></div>
+
+<header>
+  <div class="logo">MyLogo</div>
+  <div class="icons">
+    <i class="fas fa-adjust" onclick="toggleTheme()"></i>
+    <i class="fas fa-bars" onclick="toggleMenu()"></i>
+  </div>
+</header>
+
+<nav id="menu">
+  <a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i>Home</a>
+  <a href="#about" onclick="toggleMenu()"><i class="fas fa-user"></i>About</a>
+  <a href="#skills" onclick="toggleMenu()"><i class="fas fa-code"></i>Skills</a>
+  <a href="#portfolio" onclick="toggleMenu()"><i class="fas fa-briefcase"></i>Portfolio</a>
+  <a href="#contact" onclick="toggleMenu()"><i class="fas fa-envelope"></i>Contact</a>
+</nav>
+
+<section id="home">
+  <h1>Hello, I'm John</h1>
+  <p>Creative Web Developer & Designer</p>
+</section>
+
+<section id="about">
+  <h1>About Me</h1>
+  <p>
+    I build modern, clean and responsive websites using HTML, CSS and JavaScript.
+  </p>
+</section>
+
+<section id="skills">
+  <h1>My Skills</h1>
+  <p>HTML • CSS • JavaScript • Responsive Design</p>
+</section>
+
+<section id="portfolio">
+  <h1>Portfolio</h1>
+  <p>My latest projects and works will be showcased here.</p>
+</section>
+
+<section id="contact">
+  <h1>Contact Me</h1>
+  <p>Email: example@gmail.com</p>
+</section>
+
+<script>
+let menuOpen=false;
+
+function toggleMenu(){
+  const menu=document.getElementById("menu");
+  if(!menuOpen){
+    menu.style.right="0";
+    menuOpen=true;
+  }else{
+    menu.style.right="-240px";
+    menuOpen=false;
+  }
+}
+
+function toggleTheme(){
+  document.body.classList.toggle("light");
+}
+</script>
+
+</body>
+</html>
