@@ -2,219 +2,138 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Personal Landing Website</title>
-
-<link rel="stylesheet"
- href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Max Hospital Ltd. (Chakaria Branch)</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
-body{font-family:Arial,sans-serif;color:#fff;background:#000;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;scroll-behavior:smooth}
+body{background:#f8fbff;color:#333}
 
-/* Background Animation */
-.bg-animation{
-  position:fixed;inset:0;
-  background:linear-gradient(-45deg,#1d2671,#c33764,#1d2671,#000);
-  background-size:400% 400%;
-  animation:gradient 12s ease infinite;
-  z-index:-1;
-}
-@keyframes gradient{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
+header{position:sticky;top:0;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1);z-index:1000}
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 40px}
+nav h2{color:#0077b6}
+nav ul{display:flex;gap:20px;list-style:none}
+nav ul li a{text-decoration:none;color:#333;font-weight:500}
+nav ul li a:hover{color:#0096c7}
 
-/* Header */
-header{
-  position:fixed;top:0;width:100%;height:60px;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:0 20px;background:rgba(0,0,0,.6);
-  backdrop-filter:blur(6px);z-index:1000;
-}
-.logo{font-size:22px;font-weight:bold;}
-.icons i{margin-left:15px;cursor:pointer;font-size:20px;}
+.hero{height:90vh;background:linear-gradient(rgba(0,119,182,0.6),rgba(0,180,150,0.6)),url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:20px}
+.hero h1{font-size:40px;margin-bottom:15px}
+.hero p{font-size:18px;margin-bottom:20px}
+.btn{padding:10px 20px;border:none;border-radius:5px;background:#00b894;color:#fff;cursor:pointer;margin:5px}
+.btn:hover{background:#009e7d}
 
-/* Side Menu */
-nav{
-  position:fixed;right:-240px;top:60px;
-  width:240px;height:100%;
-  background:rgba(0,0,0,.85);
-  transition:.3s;
-}
-nav a{
-  display:block;color:#fff;padding:15px;
-  text-decoration:none;border-bottom:1px solid rgba(255,255,255,.1);
-}
-nav a:hover{background:rgba(255,255,255,.1);}
+section{padding:60px 40px}
+.title{text-align:center;margin-bottom:30px;color:#0077b6}
 
-/* Sections */
-section{
-  height:100vh;padding-top:120px;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;
-}
-h1{font-size:42px;margin-bottom:10px;}
-p{font-size:18px;max-width:700px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.card{background:#fff;padding:20px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1);transition:0.3s}
+.card:hover{transform:translateY(-5px)}
 
-/* Staff Section */
-.staff-box{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:15px;
-  width:80%;
-  margin-top:30px;
-}
-.staff{
-  background:rgba(255,255,255,.1);
-  padding:15px;border-radius:8px;
-}
-.add-btn{
-  margin-top:20px;
-  padding:10px 20px;
-  background:#ff4081;
-  border:none;color:#fff;
-  cursor:pointer;border-radius:6px;
-}
+.doctor img{width:100%;border-radius:10px}
 
-/* Popup */
-.modal{
-  display:none;
-  position:fixed;inset:0;
-  background:rgba(0,0,0,.7);
-  display:flex;align-items:center;justify-content:center;
-}
-.modal-content{
-  background:#111;padding:25px;
-  border-radius:8px;width:300px;
-  text-align:center;
-}
-.modal-content input{
-  width:100%;padding:8px;margin:10px 0;
-}
-.modal-content button{
-  padding:8px 15px;border:none;
-  margin-top:10px;cursor:pointer;
-}
-.close{background:red;color:#fff}
-.save{background:green;color:#fff}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{border:1px solid #ddd;padding:10px}
+.table th{background:#0077b6;color:#fff}
+
+form{display:grid;gap:15px}
+input,select,textarea{padding:10px;border:1px solid #ccc;border-radius:5px;width:100%}
+
+.emergency{background:#ff4d4d;color:#fff;text-align:center;padding:30px;font-size:24px;font-weight:bold}
+
+footer{background:#023e8a;color:#fff;padding:20px;text-align:center}
+
+@media(max-width:768px){nav{flex-direction:column;gap:10px}}
 </style>
 </head>
 
 <body>
 
-<div class="bg-animation"></div>
-
 <header>
-  <div class="logo">MyLogo</div>
-  <div class="icons">
-    <i class="fas fa-adjust" onclick="toggleTheme()"></i>
-    <i class="fas fa-bars" onclick="toggleMenu()"></i>
-  </div>
+<nav>
+<h2>Max Hospital Ltd.</h2>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#doctors">Doctors</a></li>
+<li><a href="#tests">Test List</a></li>
+<li><a href="#appointment">Appointment</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 </header>
 
-<nav id="menu">
-  <a href="#home" onclick="toggleMenu()">Home</a>
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#skills" onclick="toggleMenu()">Skills</a>
-  <a href="#portfolio" onclick="toggleMenu()">Portfolio</a>
-  <a href="#staff" onclick="toggleMenu()">Staff</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
-</nav>
-
-<section id="home">
-  <h1>Hello, I'm John</h1>
-  <p>Creative Web Developer & Designer</p>
+<section class="hero" id="home">
+<div>
+<h1>Your Health, Our Priority</h1>
+<p>Advanced healthcare services in Chakaria, Cox’s Bazar</p>
+<button class="btn">Book Appointment</button>
+<button class="btn">Contact Now</button>
+</div>
 </section>
 
 <section id="about">
-  <h1>About Me</h1>
-  <p>I build modern, clean and responsive websites.</p>
+<h2 class="title">About Us</h2>
+<p style="text-align:center;max-width:700px;margin:auto">Max Hospital Ltd. (Chakaria Branch) provides advanced medical services with experienced doctors, modern equipment, and 24/7 emergency support.</p>
 </section>
 
-<section id="skills">
-  <h1>Skills</h1>
-  <p>HTML • CSS • JavaScript</p>
+<section id="services">
+<h2 class="title">Our Services</h2>
+<div class="cards">
+<div class="card">Cardiology</div>
+<div class="card">Dermatology</div>
+<div class="card">Pediatrics</div>
+<div class="card">Oncology</div>
+<div class="card">ICU</div>
+<div class="card">Physiotherapy</div>
+<div class="card">Diagnostics</div>
+</div>
 </section>
 
-<section id="portfolio">
-  <h1>Portfolio</h1>
-  <p>My latest works will be here.</p>
+<section id="doctors">
+<h2 class="title">Our Doctors</h2>
+<div class="cards">
+<div class="card doctor"><img src="https://via.placeholder.com/200"><h4>Dr. Ahmed</h4><p>Cardiologist</p></div>
+<div class="card doctor"><img src="https://via.placeholder.com/200"><h4>Dr. Rahman</h4><p>Dermatologist</p></div>
+</div>
 </section>
 
-<!-- Staff Section -->
-<section id="staff">
-  <h1>Our Staff</h1>
-
-  <div class="staff-box" id="staffList">
-    <div class="staff">Staff 1</div>
-    <div class="staff">Staff 2</div>
-    <div class="staff">Staff 3</div>
-    <div class="staff">Staff 4</div>
-    <div class="staff">Staff 5</div>
-    <div class="staff">Staff 6</div>
-    <div class="staff">Staff 7</div>
-    <div class="staff">Staff 8</div>
-    <div class="staff">Staff 9</div>
-    <div class="staff">Staff 10</div>
-    <div class="staff">Staff 11</div>
-    <div class="staff">Staff 12</div>
-    <div class="staff">Staff 13</div>
-    <div class="staff">Staff 14</div>
-    <div class="staff">Staff 15</div>
-  </div>
-
-  <button class="add-btn" onclick="openModal()">➕ Add Staff</button>
+<section id="tests">
+<h2 class="title">Test List</h2>
+<table class="table">
+<tr><th>Test</th><th>Description</th><th>Price</th></tr>
+<tr><td>Blood Test</td><td>Basic blood analysis</td><td>500</td></tr>
+<tr><td>X-Ray</td><td>Radiology imaging</td><td>800</td></tr>
+</table>
 </section>
+
+<section id="appointment">
+<h2 class="title">Book Appointment</h2>
+<form>
+<input type="text" placeholder="Name" required>
+<input type="tel" placeholder="Phone" required>
+<input type="date" required>
+<select>
+<option>Department</option>
+<option>Cardiology</option>
+<option>Dermatology</option>
+</select>
+<textarea placeholder="Message"></textarea>
+<button class="btn">Submit</button>
+</form>
+</section>
+
+<div class="emergency">Emergency Hotline: 017XXXXXXXX</div>
 
 <section id="contact">
-  <h1>Contact</h1>
-  <p>Email: example@gmail.com</p>
+<h2 class="title">Contact Us</h2>
+<p style="text-align:center">Chakaria, Cox’s Bazar<br>Phone: 017XXXXXXXX<br>Email: info@maxhospital.com</p>
+<iframe src="https://maps.google.com/maps?q=chakaria&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300"></iframe>
 </section>
 
-<!-- Popup -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h3>Add New Staff</h3>
-    <input type="text" id="staffName" placeholder="Staff Name">
-    <button class="save" onclick="addStaff()">Save</button>
-    <button class="close" onclick="closeModal()">Cancel</button>
-  </div>
-</div>
-
-<script>
-let menuOpen=false;
-
-function toggleMenu(){
-  const menu=document.getElementById("menu");
-  menu.style.right=menuOpen?"-240px":"0";
-  menuOpen=!menuOpen;
-}
-
-function toggleTheme(){
-  document.body.classList.toggle("light");
-}
-
-function openModal(){
-  document.getElementById("modal").style.display="flex";
-}
-
-function closeModal(){
-  document.getElementById("modal").style.display="none";
-}
-
-function addStaff(){
-  const name=document.getElementById("staffName").value;
-  if(name==="")return alert("Enter name");
-  const div=document.createElement("div");
-  div.className="staff";
-  div.innerText=name;
-  document.getElementById("staffList").appendChild(div);
-  document.getElementById("staffName").value="";
-  closeModal();
-}
-</script>
+<footer>
+<p>© 2026 Max Hospital Ltd. All Rights Reserved</p>
+</footer>
 
 </body>
 </html>
